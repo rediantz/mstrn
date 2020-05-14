@@ -5,6 +5,8 @@ import axios from 'axios';
 import Config from '../Config/Config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSignInAlt} from '@fortawesome/free-solid-svg-icons';
+import iconspanel from '../../Icons/contact-img.jpg';
+import iconsms from '../../Icons/Mostrans.png';
 class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -52,26 +54,34 @@ class LoginForm extends Component {
         return (
             <>
             <Container fluid className="bg-light" style={{height:"100vh"}} >
-                <Form disabled className="col-lg-4 col-md-6 mx-auto my-auto" onSubmit={this.onSubmitHandler.bind(this)} autoComplete="off">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control 
-                        type="text" 
-                        name="username" 
-                        onChange={this.onChangeHandler.bind(this)} 
-                        readOnly={this.state.isLoading}
-                        required/>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control 
-                        type="password" 
-                        name="password" 
-                        onChange={this.onChangeHandler.bind(this)} 
-                        readOnly={this.state.isLoading}
-                        required/>
-                    <Button 
-                        type="Submit" 
-                        className="w-100 my-2 bg-success"
-                        disabled={this.state.isLoading}
-                    >{this.state.isLoading ? "Loading..." : <><FontAwesomeIcon icon={faSignInAlt}/> Login</>}</Button>
+                <Form disabled className="col-lg-6 col-md-12 mx-auto my-auto row" onSubmit={this.onSubmitHandler.bind(this)} autoComplete="off">
+                    <div className="col-5 p-0 my-auto d-none d-md-block col-md-3 col-lg-5">
+                        <img className="w-100" src={iconspanel} alt="Icon" />
+                    </div>
+                    <div className="col-12 col-md-9 col-lg-7">
+                        <div>PT. Enseval Putera Megatrading Tbk.</div>
+                        <div className="text-center"><img src={iconsms} alt="Icons" /></div>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            name="username" 
+                            onChange={this.onChangeHandler.bind(this)} 
+                            readOnly={this.state.isLoading}
+                            required/>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type="password" 
+                            name="password" 
+                            onChange={this.onChangeHandler.bind(this)} 
+                            readOnly={this.state.isLoading}
+                            required/>
+                        <Button 
+                            type="Submit" 
+                            className="w-100 my-2 bg-success"
+                            disabled={this.state.isLoading}
+                        >{this.state.isLoading ? "Loading..." : <><FontAwesomeIcon icon={faSignInAlt}/> Login</>}</Button>
+                    </div>
+                    
                 </Form>
             </Container>
             </>
