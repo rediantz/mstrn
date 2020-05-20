@@ -30,6 +30,7 @@ class Outbound extends Component {
             Data : '',
             textListPickNo : false,
             isReadFileDone : true,
+            isReadFile : false,
             listAdd : [],
             activePage : 0,
             showPage : 5,
@@ -242,7 +243,8 @@ class Outbound extends Component {
     }
     onupload(e){
         this.setState({
-            isReadFileDone : true
+            isReadFileDone : true,
+            isReadFile : true
         })
         let DataList = [];
         console.log(e.target.files);
@@ -278,6 +280,9 @@ class Outbound extends Component {
                 console.log(rows[2][0]+" "+rows[2][1]+" "+rows[2][2]);
                 //alert("File Tidak Valid");
             }
+            this.setState({
+                isReadFile : false
+            })
         })
     }
     onAddList(){
@@ -492,7 +497,7 @@ class Outbound extends Component {
             <Row className="my-2 ml-2">
             <input className="my-auto" onChange={this.onupload.bind(this)} type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"></input>
             <button type="button" disabled={this.state.isReadFileDone} className="btn btn-success" onClick={this.onAddList.bind(this)}>
-                <FontAwesomeIcon icon={faUpload}/> Upload
+                {this.state.isReadFile ? "Read File..": <><FontAwesomeIcon icon={faUpload}/> Upload</>}
             </button>
             <a href={ExPernc} download className="btn btn-success mx-1"><FontAwesomeIcon icon={faDownload}/> Download Template</a>
             {this.handlerWork(this.state.listCabang, "Cabang")}
